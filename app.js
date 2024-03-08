@@ -9,7 +9,7 @@ dotenv.config();
 app.use(express.static(path.join(__dirname+'/dist/FrontEnd')));
 const PORT = process.env.PORT || 3004;
 app.listen(PORT,()=>{
-    console.log(`server running on https://localhost:${PORT}`);
+    console.log(`server running on http://localhost:${PORT}`);
 })
 // Task2: create mongoDB connection 
 const db = require('./DB/connectionString');
@@ -106,23 +106,7 @@ app.delete('/api/employeelist/:id', async (req, res) => {
 
 //TODO: Update  a employee data from db by using api '/api/employeelist'
 //Request body format:{name:'',location:'',position:'',salary:''}
-// app.put('/api/employeelist', async (req, res) => {
-//     const {name,location,position,salary} = req.body;
-//     try {
-//     //    var editingdata = await EmployeeData.find({_id:req.params.id})
-//        vareditingdata = await new EmployeeData({
-//             name:name,
-//             location:location,
-//             position:position,
-//             salary:salary
-//         });
-//         console.log(editingdata);
-//         const editedData = editingdata.save();
-//         res.json({ success: "Data edited successfully" })
-//     } catch (error) {
-//         res.json({err:error})
-//     }
-// });
+
 app.put('/api/employeelist', async (req, res) => {
     const { _id, name, location, position, salary } = req.body;
     console.log(req.body) // Assuming _id is provided in req.body
